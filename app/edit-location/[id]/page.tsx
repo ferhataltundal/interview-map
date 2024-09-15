@@ -6,7 +6,7 @@ import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 export default function EditLocation() {
-  const locations = localStorage.getItem("markers")
+  const locations = typeof localStorage !== 'undefined' && localStorage.getItem("markers")
     ? (JSON.parse(localStorage.getItem("markers")!) as Marker[])
     : [];
   const [storage, setStorage] = useLocalStorage<Marker[]>("markers", locations);

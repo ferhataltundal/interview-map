@@ -83,7 +83,7 @@ function LocationList(props: Marker & ListActionType) {
 }
 
 export default function SavedLocations() {
-  const locations = localStorage.getItem("markers")
+  const locations = typeof localStorage !== 'undefined' && localStorage.getItem("markers")
     ? (JSON.parse(localStorage.getItem("markers")!) as Marker[])
     : [];
   const [storage, setStorage] = useLocalStorage<Marker[]>("markers", locations);

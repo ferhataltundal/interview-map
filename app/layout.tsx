@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Providers } from "./providers";
 import "./globals.scss";
 import { Flex } from "@chakra-ui/react";
 import { MapComponent } from "@/components/Map";
 import { LeftSidebar } from "@/components/LeftSidebar";
+import dynamic from 'next/dynamic';
+
+const Providers = dynamic(() => import("./providers"), { ssr: false });
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
